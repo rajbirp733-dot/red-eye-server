@@ -1,10 +1,13 @@
 const express = require("express");
-const fetch = require("node-fetch");
 const cors = require("cors");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("RED EYE SERVER RUNNING");
+});
 
 app.post("/chat", async (req, res) => {
     try {
@@ -22,9 +25,7 @@ app.post("/chat", async (req, res) => {
             })
         });
 
-        const data = await response.json();app.get("/", (req, res) => {
-    res.send("RED EYE SERVER RUNNING");
-});
+        const data = await response.json();
         res.json(data);
 
     } catch (error) {
@@ -32,4 +33,5 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log("Server running on port " + PORT));
