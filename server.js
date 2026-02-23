@@ -22,7 +22,9 @@ app.post("/chat", async (req, res) => {
             })
         });
 
-        const data = await response.json();
+        const data = await response.json();app.get("/", (req, res) => {
+    res.send("RED EYE SERVER RUNNING");
+});
         res.json(data);
 
     } catch (error) {
